@@ -127,7 +127,7 @@ export default function Hero() {
               </p>
             </div>
             <p className="mt-2 text-base text-white/70">
-              No coding required · Visual insights in minutes
+              Bring data from anywhere · Visual insights in minutes
             </p>
           </div>
 
