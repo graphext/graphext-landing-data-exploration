@@ -66,11 +66,24 @@ export default function Header() {
             </a>
           </nav>
 
-          {/* CTA Button - Glossy style */}
-          <div className="hidden md:block">
+          {/* Desktop Auth Buttons - Glossy style like Cluely */}
+          <div className="hidden items-center gap-3 md:flex">
             <a
-              href="#cta"
-              className="group relative inline-flex items-center justify-center overflow-hidden rounded-full px-5 py-2 text-sm font-medium text-white transition-all duration-300 hover:-translate-y-0.5"
+              href="https://accounts.graphext.com/users/sign_in"
+              className={`group relative inline-flex items-center justify-center overflow-hidden rounded-full px-5 py-2 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 ${
+                isScrolled ? 'text-blue-600' : 'text-white'
+              }`}
+              style={{
+                border: `1px solid ${isScrolled ? 'rgba(59, 130, 246, 0.5)' : 'rgba(255, 255, 255, 0.4)'}`,
+                background: isScrolled ? 'transparent' : 'rgba(255, 255, 255, 0.1)',
+                backdropFilter: 'blur(4px)'
+              }}
+            >
+              <span className="relative">LOG IN</span>
+            </a>
+            <a
+              href="https://accounts.graphext.com/users/sign_up"
+              className="group relative inline-flex items-center justify-center overflow-hidden rounded-full px-5 py-2 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5"
               style={{
                 background: 'linear-gradient(180deg, #3b82f6 0%, #2563eb 100%)',
                 boxShadow: '0 4px 12px rgba(37, 99, 235, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.4)',
@@ -83,7 +96,7 @@ export default function Header() {
                   background: 'linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 50%, transparent 100%)',
                 }}
               />
-              <span className="relative">Try Graphext Free</span>
+              <span className="relative">SIGN UP</span>
             </a>
           </div>
 
@@ -130,23 +143,32 @@ export default function Header() {
               >
                 FAQ
               </a>
-              <a
-                href="#cta"
-                className="relative inline-flex items-center justify-center overflow-hidden rounded-full px-5 py-2.5 text-sm font-medium text-white"
-                style={{
-                  background: 'linear-gradient(180deg, #60a5fa 0%, #3b82f6 50%, #2563eb 100%)',
-                  boxShadow: '0 4px 15px rgba(59, 130, 246, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.3)',
-                }}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <span 
-                  className="absolute inset-0 rounded-full"
+              <div className="flex flex-col gap-3">
+                <a
+                  href="https://accounts.graphext.com/users/sign_in"
+                  className="flex items-center justify-center rounded-full border border-gray-200 px-5 py-2.5 text-sm font-medium text-gray-600 transition-colors hover:text-gray-900"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  LOG IN
+                </a>
+                <a
+                  href="https://accounts.graphext.com/users/sign_up"
+                  className="relative inline-flex items-center justify-center overflow-hidden rounded-full px-5 py-2.5 text-sm font-bold text-white"
                   style={{
-                    background: 'linear-gradient(180deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 50%, transparent 50%, transparent 100%)',
+                    background: 'linear-gradient(180deg, #3b82f6 0%, #2563eb 100%)',
+                    boxShadow: '0 4px 15px rgba(59, 130, 246, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.3)',
                   }}
-                />
-                <span className="relative">Try Graphext Free</span>
-              </a>
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <span 
+                    className="absolute inset-0 rounded-full"
+                    style={{
+                      background: 'linear-gradient(180deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 50%, transparent 50%, transparent 100%)',
+                    }}
+                  />
+                  <span className="relative">SIGN UP</span>
+                </a>
+              </div>
             </nav>
           </div>
         )}

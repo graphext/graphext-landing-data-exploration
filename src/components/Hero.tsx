@@ -131,34 +131,39 @@ export default function Hero() {
             </p>
           </div>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons - Styled like Cluely */}
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            {/* Glossy button like Cluely */}
+            {/* Outline button */}
             <a
-              href="#cta"
-              className="group relative inline-flex items-center justify-center overflow-hidden rounded-full px-8 py-4 text-base font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl"
+              href="https://accounts.graphext.com/users/sign_up"
+              className="group relative inline-flex items-center justify-center overflow-hidden rounded-full px-6 py-2.5 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5"
+              style={{
+                border: '1px solid rgba(255, 255, 255, 0.4)',
+                background: 'rgba(255, 255, 255, 0.1)',
+                backdropFilter: 'blur(8px)',
+                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)'
+              }}
+            >
+              <span className="relative tracking-wide">START FOR FREE</span>
+            </a>
+
+            {/* Glossy primary button */}
+            <a
+              href="https://graphext.com/book-a-demo"
+              className="group relative inline-flex items-center justify-center overflow-hidden rounded-full px-6 py-2.5 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl"
               style={{
                 background: 'linear-gradient(180deg, #3b82f6 0%, #2563eb 100%)',
                 boxShadow: '0 10px 20px -5px rgba(37, 99, 235, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(0, 0, 0, 0.1)',
                 border: '1px solid rgba(37, 99, 235, 0.5)'
               }}
             >
-              {/* Glossy shine overlay - slightly adjusted */}
               <span 
                 className="absolute inset-0 rounded-full"
                 style={{
                   background: 'linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 50%, transparent 100%)',
                 }}
               />
-              <span className="relative flex items-center gap-2">
-                Start Exploring Free
-              </span>
-            </a>
-            <a
-              href="#features"
-              className="inline-flex items-center justify-center rounded-full border border-gray-200 bg-white/80 backdrop-blur-sm px-8 py-4 text-base font-medium text-gray-700 transition-all hover:border-gray-300 hover:bg-white"
-            >
-              See How It Works
+              <span className="relative tracking-wide">TALK TO OUR EXPERTS</span>
             </a>
           </div>
         </div>

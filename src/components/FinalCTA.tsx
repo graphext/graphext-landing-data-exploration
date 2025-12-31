@@ -12,7 +12,7 @@ export default function FinalCTA() {
         {/* CTA button - Glossy style like Cluely */}
         <div className="mt-10">
           <a
-            href="https://app.graphext.com/signup"
+            href="https://accounts.graphext.com/users/sign_up"
             className="group relative inline-flex items-center justify-center overflow-hidden rounded-full px-8 py-4 text-base font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl"
             style={{
               background: 'linear-gradient(180deg, #3b82f6 0%, #2563eb 100%)',
