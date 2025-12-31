@@ -170,6 +170,7 @@
       --tw-backdrop-saturate: initial;
       --tw-backdrop-sepia: initial;
       --tw-duration: initial;
+      --tw-ease: initial;
       --tw-divide-x-reverse: 0;
     }
   }
@@ -268,6 +269,7 @@
     --radius-2xl: 1rem;
     --radius-3xl: 1.5rem;
     --drop-shadow-md: 0 3px 3px #0000001f;
+    --ease-out: cubic-bezier(0, 0, .2, 1);
     --animate-ping: ping 1s cubic-bezier(0, 0, .2, 1) infinite;
     --blur-sm: 8px;
     --blur-lg: 16px;
@@ -705,6 +707,14 @@
     right: 25%;
   }
 
+  .-bottom-0\.5 {
+    bottom: calc(var(--spacing) * -.5);
+  }
+
+  .-bottom-1 {
+    bottom: calc(var(--spacing) * -1);
+  }
+
   .-bottom-4 {
     bottom: calc(var(--spacing) * -4);
   }
@@ -767,6 +777,10 @@
 
   .col-span-6 {
     grid-column: span 6 / span 6;
+  }
+
+  .mx-2 {
+    margin-inline: calc(var(--spacing) * 2);
   }
 
   .mx-auto {
@@ -965,6 +979,14 @@
     height: calc(var(--spacing) * 64);
   }
 
+  .h-\[3px\] {
+    height: 3px;
+  }
+
+  .h-\[70px\] {
+    height: 70px;
+  }
+
   .h-\[500px\] {
     height: 500px;
   }
@@ -1138,6 +1160,21 @@
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
 
+  .translate-y-0 {
+    --tw-translate-y: calc(var(--spacing) * 0);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+
+  .translate-y-2 {
+    --tw-translate-y: calc(var(--spacing) * 2);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+
+  .translate-y-3 {
+    --tw-translate-y: calc(var(--spacing) * 3);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+
   .-rotate-6 {
     rotate: -6deg;
   }
@@ -1266,6 +1303,10 @@
     --tw-space-y-reverse: 0;
     margin-block-start: calc(calc(var(--spacing) * 8) * var(--tw-space-y-reverse));
     margin-block-end: calc(calc(var(--spacing) * 8) * calc(1 - var(--tw-space-y-reverse)));
+  }
+
+  .gap-x-2 {
+    column-gap: calc(var(--spacing) * 2);
   }
 
   :where(.space-x-6 > :not(:last-child)) {
@@ -2063,6 +2104,16 @@
     }
   }
 
+  .text-white\/70 {
+    color: #ffffffb3;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .text-white\/70 {
+      color: color-mix(in oklab, var(--color-white) 70%, transparent);
+    }
+  }
+
   .text-white\/80 {
     color: #fffc;
   }
@@ -2089,6 +2140,10 @@
 
   .italic {
     font-style: italic;
+  }
+
+  .underline {
+    text-decoration-line: underline;
   }
 
   .antialiased {
@@ -2246,6 +2301,16 @@
   .duration-300 {
     --tw-duration: .3s;
     transition-duration: .3s;
+  }
+
+  .duration-500 {
+    --tw-duration: .5s;
+    transition-duration: .5s;
+  }
+
+  .ease-out {
+    --tw-ease: var(--ease-out);
+    transition-timing-function: var(--ease-out);
   }
 
   @media (hover: hover) {
@@ -2966,6 +3031,11 @@
 }
 
 @property --tw-duration {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-ease {
   syntax: "*";
   inherits: false
 }

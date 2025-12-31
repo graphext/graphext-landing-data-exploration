@@ -1,4 +1,53 @@
+"use client";
+
+import { useState, useEffect } from "react";
+
+const useCases = [
+  {
+    text: "Understand",
+    highlight: "customer frustrations",
+    suffix: "from support tickets",
+  },
+  {
+    text: "Track",
+    highlight: "brand sentiment",
+    suffix: "across social media",
+  },
+  {
+    text: "Discover",
+    highlight: "hidden patterns",
+    suffix: "in survey responses",
+  },
+  {
+    text: "Monitor",
+    highlight: "trending topics",
+    suffix: "from news articles",
+  },
+  {
+    text: "Analyze",
+    highlight: "product feedback",
+    suffix: "at scale",
+  },
+];
+
 export default function Hero() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setCurrentIndex((prev) => (prev + 1) % useCases.length);
+        setIsAnimating(false);
+      }, 300);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const currentUseCase = useCases[currentIndex];
+
   return (
     <section className="relative min-h-screen overflow-hidden pt-20" style={{
       background: 'linear-gradient(180deg, #5ea3f6 0%, #7ebaf8 30%, #a8d4fa 60%, #d6edfd 80%, #ffffff 100%)'
@@ -46,20 +95,41 @@ export default function Hero() {
             Data Visually + AI
           </h1>
 
-          {/* Subtitle - Geist 500, 19px, line-height 27px, white like Cluely */}
-          <p 
-            className="mx-auto mt-6 max-w-2xl"
+          {/* Animated rotating subtitle with highlighted keywords */}
+          <div 
+            className="mx-auto mt-8 max-w-3xl text-center"
             style={{ 
-              fontSize: '19px', 
-              lineHeight: '27px',
+              fontSize: '22px', 
+              lineHeight: '34px',
               fontWeight: 500,
-              color: 'rgba(255, 255, 255, 0.9)'
+              color: 'rgba(255, 255, 255, 0.95)'
             }}
           >
-            Graphext helps teams explore customer support tickets, social media
-            conversations, and survey responses — no coding required. Discover
-            patterns, trends, and insights in minutes.
-          </p>
+            <div className="h-[70px] flex items-center justify-center">
+              <p 
+                className={`transition-all duration-500 ease-out ${
+                  isAnimating ? 'opacity-0 translate-y-3' : 'opacity-100 translate-y-0'
+                }`}
+              >
+                <span>{currentUseCase.text} </span>
+                <span className="relative inline-block">
+                  <span className="font-semibold text-white">{currentUseCase.highlight}</span>
+                  {/* Blue underline highlight like Cluely */}
+                  <span 
+                    className="absolute -bottom-0.5 left-0 h-[3px] w-full rounded-full"
+                    style={{ 
+                      background: 'linear-gradient(90deg, #2563eb 0%, #3b82f6 50%, #60a5fa 100%)',
+                      boxShadow: '0 0 12px rgba(59, 130, 246, 0.6)'
+                    }}
+                  />
+                </span>
+                <span> {currentUseCase.suffix}</span>
+              </p>
+            </div>
+            <p className="mt-2 text-base text-white/70">
+              No coding required · Visual insights in minutes
+            </p>
+          </div>
 
           {/* CTA Buttons */}
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
