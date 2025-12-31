@@ -102,8 +102,11 @@ export default function Hero() {
       ref={containerRef}
       className="relative min-h-screen overflow-hidden pt-20"
       style={{
-        background:
-          "linear-gradient(180deg, #3C7CCF 0%, #5a9be0 25%, #7eb8f0 50%, #a8d4fa 75%, #d6edfd 90%, #ffffff 100%)",
+        background: `
+          radial-gradient(ellipse 120% 80% at 50% 0%, #3C7CCF 0%, #5a9be0 30%, transparent 70%),
+          radial-gradient(ellipse 100% 60% at 50% 10%, #7eb8f0 0%, transparent 60%),
+          linear-gradient(180deg, #a8d4fa 0%, #d6edfd 40%, #f0f9ff 70%, #ffffff 100%)
+        `,
       }}
     >
       {/* Animated background gradient overlay */}
@@ -115,7 +118,7 @@ export default function Hero() {
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 80% 50% at 50% 20%, rgba(255,255,255,0.15) 0%, transparent 50%)",
+              "radial-gradient(ellipse 60% 40% at 50% 15%, rgba(255,255,255,0.1) 0%, transparent 60%)",
           }}
         />
       </motion.div>
