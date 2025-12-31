@@ -103,7 +103,7 @@ export default function Hero() {
       className="relative min-h-screen overflow-hidden pt-20"
       style={{
         background:
-          "linear-gradient(180deg, #5ea3f6 0%, #7ebaf8 30%, #a8d4fa 60%, #d6edfd 80%, #ffffff 100%)",
+          "linear-gradient(180deg, #2563eb 0%, #3b82f6 25%, #60a5fa 50%, #93c5fd 75%, #dbeafe 90%, #ffffff 100%)",
       }}
     >
       {/* Animated background gradient overlay */}
@@ -115,7 +115,7 @@ export default function Hero() {
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 80% 50% at 50% 20%, rgba(255,255,255,0.3) 0%, transparent 50%)",
+              "radial-gradient(ellipse 80% 50% at 50% 20%, rgba(255,255,255,0.15) 0%, transparent 50%)",
           }}
         />
       </motion.div>
@@ -143,19 +143,19 @@ export default function Hero() {
               x2="0%"
               y2="100%"
             >
-              <stop offset="0%" stopColor="#7aaccf" stopOpacity="0.5" />
-              <stop offset="50%" stopColor="#9cc5df" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#c5dced" stopOpacity="0.3" />
+              <stop offset="0%" stopColor="#1d4ed8" stopOpacity="0.4" />
+              <stop offset="50%" stopColor="#3b82f6" stopOpacity="0.3" />
+              <stop offset="100%" stopColor="#60a5fa" stopOpacity="0.2" />
             </linearGradient>
           </defs>
         </svg>
 
-        {/* Right side subtle warm glow */}
+        {/* Right side subtle glow */}
         <motion.div
-          className="absolute -right-20 top-[30%] h-[500px] w-[500px] rounded-full bg-white/30 blur-3xl"
+          className="absolute -right-20 top-[30%] h-[500px] w-[500px] rounded-full bg-white/20 blur-3xl"
           animate={{
             scale: [1, 1.1, 1],
-            opacity: [0.3, 0.4, 0.3],
+            opacity: [0.2, 0.3, 0.2],
           }}
           transition={{
             duration: 8,
