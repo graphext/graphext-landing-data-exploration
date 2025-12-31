@@ -273,31 +273,33 @@ export default function Hero() {
             variants={itemVariants}
           >
             {/* Outline button */}
-            <MagneticButton>
-              <motion.a
-                href="https://accounts.graphext.com/users/sign_up"
-                className="group relative inline-flex items-center justify-center overflow-hidden rounded-full px-6 py-2.5 text-sm font-bold text-white transition-all duration-300"
-                style={{
-                  border: "1px solid rgba(255, 255, 255, 0.4)",
-                  background: "rgba(255, 255, 255, 0.1)",
-                  backdropFilter: "blur(8px)",
-                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.05)",
-                }}
-                whileHover={{
-                  scale: 1.02,
-                  boxShadow: "0 8px 25px rgba(0, 0, 0, 0.1)",
-                }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <span className="relative tracking-wide">START FOR FREE</span>
-              </motion.a>
-            </MagneticButton>
+            <div className="hidden sm:block">
+              <MagneticButton>
+                <motion.a
+                  href="https://accounts.graphext.com/users/sign_up"
+                  className="group relative inline-flex items-center justify-center overflow-hidden rounded-full px-4 py-2 text-xs sm:px-6 sm:py-2.5 sm:text-sm font-bold text-white transition-all duration-300"
+                  style={{
+                    border: "1px solid rgba(255, 255, 255, 0.4)",
+                    background: "rgba(255, 255, 255, 0.1)",
+                    backdropFilter: "blur(8px)",
+                    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.05)",
+                  }}
+                  whileHover={{
+                    scale: 1.02,
+                    boxShadow: "0 8px 25px rgba(0, 0, 0, 0.1)",
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <span className="relative tracking-wide">START FOR FREE</span>
+                </motion.a>
+              </MagneticButton>
+            </div>
 
             {/* Glossy primary button */}
             <MagneticButton>
               <motion.a
                 href="https://graphext.com/book-a-demo"
-                className="group relative inline-flex items-center justify-center overflow-hidden rounded-full px-6 py-2.5 text-sm font-bold text-white"
+                className="group relative inline-flex items-center justify-center overflow-hidden rounded-full px-4 py-2 text-xs sm:px-6 sm:py-2.5 sm:text-sm font-bold text-white"
                 style={{
                   background: "linear-gradient(180deg, #3b82f6 0%, #2563eb 100%)",
                   boxShadow:
@@ -318,7 +320,7 @@ export default function Hero() {
                       "linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 50%, transparent 100%)",
                   }}
                 />
-                <span className="relative tracking-wide">TALK TO OUR EXPERTS</span>
+                <span className="relative tracking-wide">REQUEST A DEMO</span>
               </motion.a>
             </MagneticButton>
           </motion.div>
