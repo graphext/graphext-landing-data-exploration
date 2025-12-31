@@ -8,3 +8,13 @@ export { default as UseCases } from "./UseCases";
 export { default as FAQ } from "./FAQ";
 export { default as FinalCTA } from "./FinalCTA";
 export { default as Footer } from "./Footer";
+export { default as SmoothScroll } from "./SmoothScroll";
+export { default as AnimatedSection } from "./AnimatedSection";
+export {
+  StaggerContainer,
+  StaggerItem,
+  ParallaxElement,
+  FloatingElement,
+  ScaleOnHover,
+  MagneticButton,
+} from "./AnimatedSection";

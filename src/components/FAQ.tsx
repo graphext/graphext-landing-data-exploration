@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { motion, useInView, AnimatePresence, type Variants } from "framer-motion";
 
 const faqs = [
   {
@@ -37,40 +38,77 @@ const faqs = [
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+    },
+  };
+
   return (
-    <section id="faq" className="bg-white py-24">
+    <section id="faq" className="bg-white py-24" ref={sectionRef}>
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         {/* Section header */}
-        <div className="text-center">
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+        >
           <h2 className="font-[family-name:var(--font-garamond)] text-3xl font-normal text-gray-900 sm:text-4xl md:text-5xl">
             Frequently asked questions
           </h2>
-        </div>
+        </motion.div>
 
         {/* FAQ items */}
-        <div className="mt-16 space-y-0 divide-y divide-gray-100">
+        <motion.div
+          className="mt-16 space-y-0 divide-y divide-gray-100"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
           {faqs.map((faq, index) => (
-            <div key={index} className="py-5">
-              <button
+            <motion.div
+              key={index}
+              className="py-5"
+              variants={itemVariants}
+            >
+              <motion.button
                 className="flex w-full items-center justify-between text-left group"
                 onClick={() => toggleFAQ(index)}
+                whileHover={{ x: 4 }}
+                transition={{ duration: 0.2 }}
               >
-                <h3 className="text-base font-medium text-gray-900 group-hover:text-blue-600 transition-colors">
+                <h3 className="text-base font-medium text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
                   {faq.question}
                 </h3>
                 <span className="ml-6 flex-shrink-0">
-                  <svg
-                    className={`h-5 w-5 text-gray-400 transition-transform duration-200 ${
-                      openIndex === index ? "rotate-180" : ""
-                    }`}
+                  <motion.svg
+                    className="h-5 w-5 text-gray-400"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
+                    animate={{ rotate: openIndex === index ? 180 : 0 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
                   >
                     <path
                       strokeLinecap="round"
@@ -78,21 +116,34 @@ export default function FAQ() {
                       strokeWidth={1.5}
                       d="M19 9l-7 7-7-7"
                     />
-                  </svg>
+                  </motion.svg>
                 </span>
-              </button>
-              <div
-                className={`mt-3 overflow-hidden transition-all duration-200 ${
-                  openIndex === index
-                    ? "max-h-96 opacity-100"
-                    : "max-h-0 opacity-0"
-                }`}
-              >
-                <p className="text-sm text-gray-500 leading-relaxed">{faq.answer}</p>
-              </div>
-            </div>
+              </motion.button>
+              
+              <AnimatePresence initial={false}>
+                {openIndex === index && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    className="overflow-hidden"
+                  >
+                    <motion.p
+                      className="pt-3 text-sm text-gray-500 leading-relaxed"
+                      initial={{ y: -10 }}
+                      animate={{ y: 0 }}
+                      exit={{ y: -10 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      {faq.answer}
+                    </motion.p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

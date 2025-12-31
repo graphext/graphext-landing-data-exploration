@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { EB_Garamond } from "next/font/google";
 import { GeistSans } from "geist/font/sans";
+import { SmoothScroll } from "@/components";
 import "./globals.css";
 
 const garamond = EB_Garamond({
@@ -39,7 +40,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${GeistSans.variable} ${garamond.variable}`}>
-      <body className={`${GeistSans.className} bg-white text-gray-900 antialiased`}>{children}</body>
+      <body className={`${GeistSans.className} bg-white text-gray-900 antialiased`}>
+        <SmoothScroll>{children}</SmoothScroll>
+      </body>
     </html>
   );
 }

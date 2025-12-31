@@ -1,3 +1,9 @@
+"use client";
+
+import { useRef } from "react";
+import { motion, useInView, type Variants } from "framer-motion";
+import { ScaleOnHover } from "./AnimatedSection";
+
 const features = [
   {
     title: "AI that finds patterns for you, automatically",
@@ -164,38 +170,82 @@ const features = [
 ];
 
 export default function Features() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+    },
+  };
+
   return (
-    <section id="features" className="bg-white py-24">
+    <section id="features" className="bg-white py-24" ref={sectionRef}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section header */}
-        <div className="text-center">
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+        >
           <h2 className="font-[family-name:var(--font-garamond)] text-3xl font-normal text-gray-900 sm:text-4xl md:text-5xl">
             Four ways we transform
             <br />
             your data analysis
           </h2>
-        </div>
+        </motion.div>
 
         {/* Features grid - 2x2 like Cluely */}
-        <div className="mt-16 grid gap-6 md:grid-cols-2">
+        <motion.div
+          className="mt-16 grid gap-6 md:grid-cols-2"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
           {features.map((feature, index) => (
-            <div
-              key={index}
-              className="group relative overflow-hidden rounded-3xl border border-gray-100 bg-white p-1 transition-all hover:shadow-lg hover:shadow-gray-100"
-            >
-              {/* Mockup */}
-              <div className="overflow-hidden rounded-2xl">
-                {feature.mockup}
-              </div>
+            <motion.div key={index} variants={itemVariants}>
+              <ScaleOnHover scale={1.02}>
+                <div className="group relative overflow-hidden rounded-3xl border border-gray-100 bg-white p-1 transition-all duration-500 hover:shadow-xl hover:shadow-gray-200/50">
+                  {/* Hover gradient overlay */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-blue-50/50 to-transparent pointer-events-none rounded-3xl" />
+                  
+                  {/* Mockup */}
+                  <motion.div
+                    className="overflow-hidden rounded-2xl"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                  >
+                    {feature.mockup}
+                  </motion.div>
 
-              {/* Content */}
-              <div className="p-6">
-                <h3 className="text-lg font-semibold text-gray-900">{feature.title}</h3>
-                <p className="mt-2 text-sm text-gray-500 leading-relaxed">{feature.description}</p>
-              </div>
-            </div>
+                  {/* Content */}
+                  <div className="p-6 relative">
+                    <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+                      {feature.title}
+                    </h3>
+                    <p className="mt-2 text-sm text-gray-500 leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
+                </div>
+              </ScaleOnHover>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
