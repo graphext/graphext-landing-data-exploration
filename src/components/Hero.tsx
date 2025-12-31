@@ -103,7 +103,7 @@ export default function Hero() {
       className="relative min-h-screen overflow-hidden pt-20"
       style={{
         background:
-          "linear-gradient(180deg, #2563eb 0%, #3b82f6 25%, #60a5fa 50%, #93c5fd 75%, #dbeafe 90%, #ffffff 100%)",
+          "linear-gradient(180deg, #3C7CCF 0%, #5a9be0 25%, #7eb8f0 50%, #a8d4fa 75%, #d6edfd 90%, #ffffff 100%)",
       }}
     >
       {/* Animated background gradient overlay */}
@@ -143,9 +143,9 @@ export default function Hero() {
               x2="0%"
               y2="100%"
             >
-              <stop offset="0%" stopColor="#1d4ed8" stopOpacity="0.4" />
-              <stop offset="50%" stopColor="#3b82f6" stopOpacity="0.3" />
-              <stop offset="100%" stopColor="#60a5fa" stopOpacity="0.2" />
+              <stop offset="0%" stopColor="#3C7CCF" stopOpacity="0.4" />
+              <stop offset="50%" stopColor="#5a9be0" stopOpacity="0.3" />
+              <stop offset="100%" stopColor="#7eb8f0" stopOpacity="0.2" />
             </linearGradient>
           </defs>
         </svg>
