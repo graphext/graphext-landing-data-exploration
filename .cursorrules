@@ -1,0 +1,13 @@
+# Cursor Rules for graphext-landing-data-exploration
+
+## Git Workflow
+- **NEVER** make git commits without confirming with the user first
+- Always show the changes and ask for explicit approval before running `git commit` and `git push` commands
+- Wait for user confirmation before any git operations that modify the repository
+
+## Project Context
+- This is a Next.js landing page for Graphext
+- Uses Bun as the package manager
+- Uses Tailwind CSS v4 for styling
+- Uses Framer Motion for animations
+- Uses Lenis for smooth scrolling
