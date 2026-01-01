@@ -53,7 +53,6 @@ export default function Hero() {
   });
 
   // Parallax transforms
-  const backgroundY = useTransform(smoothProgress, [0, 1], ["0%", "30%"]);
   const contentY = useTransform(smoothProgress, [0, 1], ["0%", "15%"]);
   const mockupY = useTransform(smoothProgress, [0, 1], ["0%", "25%"]);
   const opacity = useTransform(smoothProgress, [0, 0.5], [1, 0.3]);
@@ -109,20 +108,6 @@ export default function Hero() {
         `,
       }}
     >
-      {/* Animated background gradient overlay */}
-      <motion.div
-        className="absolute inset-0"
-        style={{ y: backgroundY }}
-      >
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(ellipse 60% 40% at 50% 15%, rgba(255,255,255,0.1) 0%, transparent 60%)",
-          }}
-        />
-      </motion.div>
-
       {/* Background decorative elements - Mountains with parallax */}
       <motion.div
         className="absolute inset-0 overflow-hidden"
