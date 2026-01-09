@@ -11,3 +11,29 @@
 - Uses Tailwind CSS v4 for styling
 - Uses Framer Motion for animations
 - Uses Lenis for smooth scrolling
+
+## Content Source of Truth - Notion MCP
+- **ALWAYS** use the Notion MCP to fetch the latest content before making changes to the landing page
+- The main Notion page for this project is: `https://www.notion.so/victorianoi/Graphext-2dc358038bc580d19165fc016847ed52`
+- Use `notion-fetch` tool with the page URL to retrieve content
+
+### Notion Pages Structure:
+1. **Landing Page Content Reference** (`https://www.notion.so/44f47272877b47aeab2fbec0f5b50531`)
+   - Core focus and messaging
+   - Key use cases (Survey Analysis, Social Media, Customer Segmentation, Review Analytics)
+   - Tone & voice guidelines
+   - Key messages and taglines
+   - Target audience definitions
+
+2. **Landing Page Technical Reference** (`https://www.notion.so/49a6f5807a2a43919474c58ab1468c8b`)
+   - Stack specifications
+   - Design requirements
+   - Animation & effects guidelines
+   - Performance goals
+   - Components checklist
+
+### When to Fetch from Notion:
+- Before implementing new sections or components
+- When updating copy or messaging
+- When clarifying design or technical requirements
+- To verify alignment with project goals

@@ -102,7 +102,7 @@ export default function Hero() {
       className="relative min-h-screen overflow-hidden pt-20"
       style={{
         background: `
-          radial-gradient(ellipse 120% 80% at 50% 0%, #3C7CCF 0%, #5a9be0 30%, transparent 70%),
+          radial-gradient(ellipse 180% 70% at 50% 0%, #3C7CCF 0%, #5a9be0 25%, transparent 60%),
           radial-gradient(ellipse 100% 60% at 50% 10%, #7eb8f0 0%, transparent 60%),
           linear-gradient(180deg, #a8d4fa 0%, #d6edfd 40%, #f0f9ff 70%, #ffffff 100%)
         `,
